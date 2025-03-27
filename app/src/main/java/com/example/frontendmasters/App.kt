@@ -2,13 +2,14 @@ package com.example.frontendmasters
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -18,15 +19,27 @@ import androidx.compose.ui.unit.dp
 
 @Preview
 @Composable
+fun App_Preview(){
+    App()
+}
+
+
+
+@Composable
 fun App() {
+    var selectedRoute = remember {
+        mutableStateOf(Routes.Menupage.route)
+    }
 Scaffold (
     topBar = {
         App_Title()
             },
     bottomBar = {
-        Text(
-            text = "This is the bottom",
-            modifier = Modifier.padding(20.dp)
+        NavBar(
+            Routes.Menupage.route
+            , onChange = {
+                selectedRoute.value = it
+            }
         )
     }
     )
@@ -37,7 +50,7 @@ Scaffold (
 
 @Composable
 fun App_Title() {
-    Box(modifier = Modifier){
+    Row (modifier = Modifier){
             Image(
                 painter = painterResource(R.drawable.logo),
                 contentDescription = "Logo",

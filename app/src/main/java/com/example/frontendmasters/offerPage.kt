@@ -36,12 +36,9 @@ fun OfferPage(modifier: Modifier = Modifier) {
                 .fillMaxHeight()
         )
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-            Offer(title = "Title_1", description = "Description 1")
-            Offer(title = "Title_2", description = "Description 2")
-            Offer(title = "Title_3", description = "Description 3")
-            Offer(title = "Title_4", description = "Description 4")
-            Offer(title = "Title_5", description = "Description 5")
-            Offer(title = "Title_6", description = "Description 6")
+            for(i in 1..6) {
+                Offer(title = "Title $i", description = "Description $i")
+            }
         }
     }
 }
