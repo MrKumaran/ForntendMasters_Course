@@ -1,11 +1,12 @@
 package com.example.frontendmasters
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.frontendmasters.ui.theme.Alternative1
 import com.example.frontendmasters.ui.theme.OnPrimary
+import com.example.frontendmasters.ui.theme.Secondary
 
 data class NavPage(val route: String, val name: String, val icon: ImageVector)
 
@@ -48,14 +50,16 @@ fun NavBar(
         onChange: (String) -> Unit
 ) {
     Row(
+        horizontalArrangement = Arrangement.SpaceAround,
         modifier = Modifier
+            .fillMaxWidth()
+            .background(Secondary)
     ) {
         for (page in Routes.pages) {
             NavBarItem(
                 page = page,
                 selected = selectedRoute != page.route,
                 modifier = Modifier
-                    .padding(horizontal = 12.dp)
                     .clickable{
                         onChange(page.route)
                     }
