@@ -1,4 +1,4 @@
-package com.example.frontendmasters
+package com.example.frontendmasters.Pages
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -21,10 +21,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.frontendmasters.R
 import com.example.frontendmasters.ui.theme.Alternative1
 
 
-@Preview(showBackground = true, widthDp = 400, heightDp = 600)
 @Composable
 fun OfferPage(modifier: Modifier = Modifier) {
     Box(modifier = modifier) {
@@ -36,7 +36,7 @@ fun OfferPage(modifier: Modifier = Modifier) {
                 .fillMaxHeight()
         )
         Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-            for(i in 1..6) {
+            for(i in 1..10) {
                 Offer(title = "Title $i", description = "Description $i")
             }
         }

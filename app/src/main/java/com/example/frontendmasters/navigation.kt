@@ -38,12 +38,6 @@ object Routes{
     val pages  = listOf(Menupage, OfferPage, OrderPage, InfoPage)
 }
 
-@Preview(widthDp = 410)
-@Composable
-private fun NavBarItem_Preview() {
-    App()
-}
-
 @Composable
 fun NavBar(
         selectedRoute: String = Routes.Menupage.route,
