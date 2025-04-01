@@ -1,50 +1,56 @@
 package com.example.frontendmasters.Pages
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import com.example.frontendmasters.DataManager
 import com.example.frontendmasters.Product
-import com.example.frontendmasters.R
 import com.example.frontendmasters.ui.theme.Alternative1
-import com.example.frontendmasters.ui.theme.OnPrimary
 
-@Preview
+
 @Composable
-fun MenuPage(modifier: Modifier = Modifier) {
-    LazyColumn (
+fun MenuPage(dataManager: DataManager, modifier: Modifier = Modifier) {
+    LazyColumn(
         modifier = modifier
-    ){
-        items(10){
-            Card (
-                shape = RoundedCornerShape(0),
-                elevation = CardDefaults.cardElevation(),
+    ) {
+        items(dataManager.menu) {
+            Text(
+                it.name,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
                 modifier = Modifier
-                    .background(OnPrimary)
-                    .padding(10.dp)
-            ) {
-                ProductItem(Product(2, "Coffee", 2.99, "black_coffee"), {})
-                Spacer(modifier = Modifier.padding(vertical = 5.dp))
+                    .fillMaxWidth()
+                    .padding(bottom = 10.dp)
+                    .background(Alternative1)
+                    .padding(vertical = 10.dp, horizontal = 20.dp)
+                )
+            it.products.forEach { product ->
+                Card(
+                    modifier = Modifier
+                        .background(Color.White)
+                        .padding(10.dp)
+                ) {
+                    ProductItem(product, onAdd = {product ->
+                        dataManager.cartAdd(product)
+                    })
+                }
             }
         }
     }
@@ -53,15 +59,15 @@ fun MenuPage(modifier: Modifier = Modifier) {
 fun Double.format(digits: Int) = "%.${digits}f".format(this)
 
 @Composable
-fun ProductItem(product: Product, onAdd: (Product)->Unit) {
+fun ProductItem(product: Product, onAdd: (Product) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(Color.White)
     ) {
 
-        Image(
-            painter = painterResource(id = R.drawable.black_coffee),
+        AsyncImage(
+            model = product.imageUrl,
             contentDescription = "Image for ${product.name}",
             contentScale = ContentScale.FillWidth,
             modifier = Modifier

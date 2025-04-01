@@ -2,7 +2,6 @@ package com.example.frontendmasters
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
@@ -18,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.frontendmasters.Pages.InfoPage
 import com.example.frontendmasters.Pages.MenuPage
@@ -26,7 +24,7 @@ import com.example.frontendmasters.Pages.OfferPage
 import com.example.frontendmasters.Pages.OrderPage
 
 @Composable
-fun App() {
+fun App(dataManager:DataManager) {
     val insets = WindowInsets.systemBars.asPaddingValues()
     var selectedRoute = remember {
         mutableStateOf(Routes.Menupage.route)
@@ -49,9 +47,9 @@ fun App() {
         {
         when(selectedRoute.value) {
             Routes.OfferPage.route -> OfferPage(modifier = Modifier.padding(it))
-            Routes.Menupage.route -> MenuPage(modifier = Modifier.padding(it))
+            Routes.Menupage.route -> MenuPage(dataManager, modifier = Modifier.padding(it))
             Routes.InfoPage.route -> InfoPage(modifier = Modifier.padding(it))
-            Routes.OrderPage.route -> OrderPage(modifier = Modifier.padding(it))
+            Routes.OrderPage.route -> OrderPage(dataManager,modifier = Modifier.padding(it))
         }
     }
 }
