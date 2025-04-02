@@ -48,6 +48,7 @@ fun NavBar(
         modifier = Modifier
             .fillMaxWidth()
             .background(Secondary)
+            .padding(bottom = 20.dp)
     ) {
         for (page in Routes.pages) {
             NavBarItem(
