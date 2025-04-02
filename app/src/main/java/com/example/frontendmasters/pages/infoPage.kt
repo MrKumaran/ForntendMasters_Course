@@ -1,4 +1,4 @@
-package com.example.frontendmasters.Pages
+package com.example.frontendmasters.pages
 
 import android.view.ViewGroup
 import android.webkit.WebView

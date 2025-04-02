@@ -1,4 +1,4 @@
-package com.example.frontendmasters.Pages
+package com.example.frontendmasters.pages
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

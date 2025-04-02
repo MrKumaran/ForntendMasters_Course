@@ -1,4 +1,4 @@
-package com.example.frontendmasters.Pages
+package com.example.frontendmasters.pages
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
