@@ -18,6 +18,6 @@ val Alternative1 = Color(0xFFB08968)
 val Alternative2 = Color(0xFFDDB892)
 val CardBackground = Color(0xFFEDE0D4)
 
-val SurfaceBackground = Color(0xFFEFEFEF)
+val SurfaceBackground = Color(0x80FFFFFF)
 
 val OnPrimary = Color(0xFFEDE0D4)

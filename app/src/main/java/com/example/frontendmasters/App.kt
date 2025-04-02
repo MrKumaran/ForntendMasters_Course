@@ -61,7 +61,6 @@ fun App_Title() {
                 painter = painterResource(R.drawable.logo),
                 contentDescription = "Logo",
                 modifier = Modifier
-                    .padding(0.dp,20.dp,0.dp,0.dp)
                     .background(color = Color.Black)
                     .padding(0.dp,20.dp,230.dp,10.dp)
                     .fillMaxWidth()
