@@ -37,7 +37,7 @@ class DataManager(app: Application): AndroidViewModel(app) {
     }
 
     fun cartRemove(product: Product){
-        var aux = cart.toMutableList()
+        val aux = cart.toMutableList()
         aux.removeAll {
             it.product.id == product.id
         }

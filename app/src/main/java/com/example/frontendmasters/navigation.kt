@@ -1,5 +1,6 @@
 package com.example.frontendmasters
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -20,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.frontendmasters.ui.theme.Alternative1
@@ -64,7 +64,7 @@ fun NavBar(
 }
 
 @Composable
-fun NavBarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Modifier) {
+fun NavBarItem(page: NavPage, selected: Boolean = false, @SuppressLint("ModifierParameter") modifier: Modifier = Modifier) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.padding(horizontal = 12.dp)
