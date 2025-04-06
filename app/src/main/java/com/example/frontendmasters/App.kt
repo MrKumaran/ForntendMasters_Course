@@ -18,14 +18,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import com.example.frontendmasters.pages.InfoPage
 import com.example.frontendmasters.pages.MenuPage
 import com.example.frontendmasters.pages.OfferPage
 import com.example.frontendmasters.pages.OrderPage
 
 @Composable
-fun App(dataManager:DataManager) {
+fun App(act:MainActivity) {
     val insets = WindowInsets.systemBars.asPaddingValues()
+    val dataManager = ViewModelProvider(act)
+        .get(DataManager::class.java)
     var selectedRoute = remember {
         mutableStateOf(Routes.Menupage.route)
         }

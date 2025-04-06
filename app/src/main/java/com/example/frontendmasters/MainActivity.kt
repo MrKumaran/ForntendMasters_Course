@@ -12,13 +12,11 @@ import com.example.frontendmasters.ui.theme.FrontendMastersTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val dataManager = ViewModelProvider(this)
-            .get(DataManager::class.java)
         enableEdgeToEdge()
         WindowCompat.setDecorFitsSystemWindows(window, true)
         setContent {
             FrontendMastersTheme {
-                App(dataManager)
+                App(this)
             }
         }
     }

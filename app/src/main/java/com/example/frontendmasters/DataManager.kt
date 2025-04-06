@@ -1,14 +1,13 @@
 package com.example.frontendmasters
 
-import android.app.Application
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class DataManager(app: Application): AndroidViewModel(app) {
+class DataManager: ViewModel() {
 
     var menu: List<Category> by mutableStateOf(listOf())
     var cart: List<ItemInCart> by mutableStateOf(listOf())
@@ -17,7 +16,7 @@ class DataManager(app: Application): AndroidViewModel(app) {
     }
     private fun fetchData() {
         viewModelScope.launch {
-            menu = API.menuService.fetchMenu()
+            menu = API.APIService.fetchMenu()
         }
     }
 
